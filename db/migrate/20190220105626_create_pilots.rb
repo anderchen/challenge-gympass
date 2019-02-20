@@ -3,8 +3,7 @@ class CreatePilots < ActiveRecord::Migration[5.1]
     create_table :pilots do |t|
       t.string :name
       t.integer :pilot_code
-      t.timestamp :created_at
-      t.timestamp :updated_at
+      t.timestamps
     end
   end
 end
