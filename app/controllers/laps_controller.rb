@@ -13,9 +13,31 @@ class LapsController
   end
 
   def pilot_laps
+    display_all_pilots
+    @lapsview.show_pilot_laps(find_pilot_and_laps, @pilot)
+  end
+
+  def pilot_best_lap
+    display_all_pilots
+
+    best_lap = find_pilot_and_laps.order('lap_time ASC').first
+    @lapsview.show_pilot_best_lap(best_lap)
+  end
+
+  def best_lap_overall
+    index
+    best_overall = Lap.all.order('lap_time ASC').first
+    @lapsview.show_overall_best_lap(best_overall)
+  end
+
+  private
+  def display_all_pilots
     all_pilots = Pilot.all
     @pilotsview.show_all_pilots(all_pilots)
-    laps = Lap.where(pilot: Pilot.find_by(pilot_code: @lapsview.choosing_pilot))
-    @lapsview.show_pilot_laps(laps)
+  end
+
+  def find_pilot_and_laps
+    @pilot = Pilot.find_by(pilot_code: @lapsview.choosing_pilot)
+    laps = Lap.where(pilot: @pilot) 
   end
 end

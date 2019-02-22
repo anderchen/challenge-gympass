@@ -25,7 +25,11 @@ class Router
     when 1 then @pilotscontroller.index
     when 2 then @lapscontroller.index
     when 3 then @lapscontroller.pilot_laps
-    when 4 then stop
+    when 4 then @lapscontroller.pilot_best_lap
+    when 5 then @lapscontroller.best_lap_overall
+    when 6 then stop
+    else
+      puts "Please input a valid option"
     end
   end
 
@@ -34,6 +38,8 @@ class Router
       "List all pilots",
       "List the all laps",
       "See all laps from a pilot",
+      "See a pilot best lap",
+      "Discover which was the best lap of the race",
       "Exit program"
     ]
   end

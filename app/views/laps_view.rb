@@ -12,14 +12,24 @@ class LapsView
   def choosing_pilot
     puts "Choose a pilot by it's code"
     print "> "
-    gets.chomp
+    gets.chomp 
   end
 
-  def show_pilot_laps(laps)
+  def show_pilot_laps(laps, pilot)
+    puts "\nShowing #{pilot.name} laps"
     puts "-" * 80
     laps.each do |lap|
       puts "#{lap.time}    #{lap.pilot.pilot_code}  #{lap.pilot.name.rjust(15)}   #{lap.lap_number}   #{lap.lap_time}  #{lap.average_speed}"
     end
     puts "-" * 80
   end
+
+  def show_pilot_best_lap(best_lap)
+    puts "\nThe best lap #{best_lap.pilot.name} did was lap no. #{best_lap.lap_number} in #{best_lap.lap_time} "
+  end
+
+  def show_overall_best_lap(best_overall)
+    puts "\nThe best lap of the race was made by#{best_overall.pilot.name}, on lap no. #{best_overall.lap_number} in #{best_overall.lap_time} "
+  end
+
 end
