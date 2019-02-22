@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_02_20_115443) do
 
   create_table "laps", force: :cascade do |t|
-    t.datetime "time"
+    t.string "time"
     t.integer "lap_number"
-    t.datetime "lap_time"
+    t.string "lap_time"
     t.float "average_speed"
+    t.integer "pilot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["pilot_id"], name: "index_laps_on_pilot_id"
   end
 
   create_table "pilots", force: :cascade do |t|
