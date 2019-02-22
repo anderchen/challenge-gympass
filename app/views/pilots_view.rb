@@ -1,4 +1,4 @@
-class PostsView
+class PilotsView
 
   def show_all_pilots(all_pilots)
     puts "Displaying all pilots from the race"

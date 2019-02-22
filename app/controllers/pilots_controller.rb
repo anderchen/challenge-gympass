@@ -2,13 +2,10 @@ require_relative "../views/pilots_view"
 
 class PilotsController
   def initialize
-    @view = PostsView.new
+    @view = PilotsView.new
   end
 
   def index
-    # DO NOT WRITE SQL QUERIES
-    # TODO: gather all posts from the database
-    # TODO: give them to the view to be printed
       all_pilots = Pilot.all
       @view.show_all_pilots(all_pilots)
   end

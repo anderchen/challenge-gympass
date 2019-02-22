@@ -24,7 +24,8 @@ class Router
     case action
     when 1 then @pilotscontroller.index
     when 2 then @lapscontroller.index
-    when 3 then stop
+    when 3 then @lapscontroller.pilot_laps
+    when 4 then stop
     end
   end
 
@@ -32,6 +33,7 @@ class Router
     [
       "List all pilots",
       "List the all laps",
+      "See all laps from a pilot",
       "Exit program"
     ]
   end
