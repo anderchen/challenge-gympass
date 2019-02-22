@@ -1,3 +1,4 @@
+# require 'Time'
 require_relative "../views/laps_view"
 require_relative "../views/pilots_view"
 
@@ -46,7 +47,10 @@ class LapsController
   end
 
   def winner
+    finished_laps = Lap.where(lap_number: 4).order('time ASC')
+    winner = finished_laps.first
     
+    @lapsview.show_winner(finished_laps, winner, time_after_winner(finished_laps, winner))
   end
 
   private
@@ -58,5 +62,20 @@ class LapsController
   def find_pilot_and_laps
     @pilot = Pilot.find_by(pilot_code: @lapsview.choosing_pilot)
     laps = Lap.where(pilot: @pilot) 
+  end
+
+  def time_after_winner(finished_laps, winner)
+    result = []
+    finished_laps.each do |lap|
+      unless lap == winner
+        winner_parse = Time.parse(winner.time)
+        time_parse = Time.parse(lap.time)
+        subtraction = time_parse - winner_parse
+
+        after_winner = Time.at(subtraction).strftime("%M:%S.%3N")
+        result << after_winner
+      end
+    end
+    result
   end
 end
