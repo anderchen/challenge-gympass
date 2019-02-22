@@ -30,6 +30,25 @@ class LapsController
     @lapsview.show_overall_best_lap(best_overall)
   end
 
+  def pilot_average_speed
+    display_all_pilots
+
+    laps = find_pilot_and_laps
+
+    average_speed_sum = 0
+    laps.each do |lap|
+      average_speed_sum += lap.average_speed.to_f
+    end
+
+    average_speed = '%.3f' % (average_speed_sum / laps.count)
+
+    @lapsview.show_average_speed(average_speed, @pilot)
+  end
+
+  def winner
+    
+  end
+
   private
   def display_all_pilots
     all_pilots = Pilot.all

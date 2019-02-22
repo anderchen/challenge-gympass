@@ -32,4 +32,8 @@ class LapsView
     puts "\nThe best lap of the race was made by#{best_overall.pilot.name}, on lap no. #{best_overall.lap_number} in #{best_overall.lap_time} "
   end
 
+  def show_average_speed(average_speed, pilot)
+    puts "\n#{pilot.name} average speed in the whole race is #{average_speed}"
+  end
+
 end
