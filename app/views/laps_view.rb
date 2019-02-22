@@ -36,14 +36,12 @@ class LapsView
     puts "\n#{pilot.name} average speed in the whole race is #{average_speed}"
   end
 
-  def show_winner(finsihed_laps, winner, time_after_winner)
-    puts "The winner of the race is #{winner.pilot.name}"
-    puts "\n#{winner.time}    #{winner.pilot.pilot_code}  #{winner.pilot.name.rjust(15)}   #{winner.lap_number}   #{winner.lap_time}  #{winner.average_speed}"
+  def show_winner(finsihed_laps, time_after_winner)
 
- 
-    finsihed_laps.drop(1).each do |lap|
-        puts "#{lap.time}    #{lap.pilot.pilot_code}  #{lap.pilot.name.rjust(15)}   #{lap.lap_number}   #{lap.lap_time}  #{lap.average_speed}"
+    counter = 1
+    finsihed_laps.each do |lap|
+      puts "#{counter} place:   #{lap.pilot.pilot_code}  #{lap.pilot.name.rjust(15)}   #{lap.lap_number}       #{time_after_winner[counter - 1]}"
+      counter += 1
     end
   end
-
 end

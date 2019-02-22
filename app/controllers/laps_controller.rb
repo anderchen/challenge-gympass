@@ -47,10 +47,17 @@ class LapsController
   end
 
   def winner
-    finished_laps = Lap.where(lap_number: 4).order('time ASC')
-    winner = finished_laps.first
-    
-    @lapsview.show_winner(finished_laps, winner, time_after_winner(finished_laps, winner))
+    pilots = Pilot.all
+
+    laps = []
+
+    pilots.each do |pilot|
+      final_lap = Lap.where(pilot: pilot).last
+      laps << final_lap
+    end
+
+    finished_laps = laps.sort_by &:time
+    @lapsview.show_winner(finished_laps, time_after_winner(finished_laps))
   end
 
   private
@@ -64,15 +71,21 @@ class LapsController
     laps = Lap.where(pilot: @pilot) 
   end
 
-  def time_after_winner(finished_laps, winner)
+  def time_after_winner(finished_laps)
+    winner = finished_laps[0]
     result = []
+
     finished_laps.each do |lap|
-      unless lap == winner
+      if lap == winner 
+        result << nil
+      elsif lap.lap_number < 4
+        result << "Incomplete"
+      else
         winner_parse = Time.parse(winner.time)
         time_parse = Time.parse(lap.time)
         subtraction = time_parse - winner_parse
 
-        after_winner = Time.at(subtraction).strftime("%M:%S.%3N")
+        after_winner = Time.at(subtraction).strftime("+ %M:%S.%3N")
         result << after_winner
       end
     end
