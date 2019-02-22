@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_20_115443) do
 
   create_table "pilots", force: :cascade do |t|
     t.string "name"
-    t.integer "pilot_code"
+    t.string "pilot_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

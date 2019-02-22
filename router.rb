@@ -5,13 +5,15 @@ class Router
   def initialize
     @pilotscontroller = PilotsController.new
     @lapscontroller = LapsController.new
+    @running = true
   end
 
   def run
     print_welcome
-    loop do
+    while @running
       print_menu
       action = gets.chomp.to_i
+      print `clear`
       route_action(action)
     end
   end
@@ -22,9 +24,7 @@ class Router
     case action
     when 1 then @pilotscontroller.index
     when 2 then @lapscontroller.index
-    # when 3 then @controller.update
-    # when 4 then @controller.destroy
-    # when 5 then @controller.upvote
+    when 3 then stop
     end
   end
 
@@ -32,9 +32,7 @@ class Router
     [
       "List all pilots",
       "List the all laps",
-      "Edit a post title & url",
-      "Delete a post",
-      "Vote for a post"
+      "Exit program"
     ]
   end
 
@@ -48,7 +46,11 @@ class Router
 
   def print_welcome
     puts "-----------------------------"
-    puts "Welcome to HackerNewsCopyCat!"
+    puts "Welcome to the race log!"
     puts "-----------------------------"
   end
+end
+
+def stop
+  @running = false
 end
