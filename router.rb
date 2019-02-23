@@ -1,9 +1,7 @@
-require_relative "app/controllers/pilots_controller"
 require_relative "app/controllers/laps_controller"
 
 class Router
   def initialize
-    @pilotscontroller = PilotsController.new
     @lapscontroller = LapsController.new
     @running = true
   end
@@ -56,7 +54,7 @@ class Router
 
   def print_welcome
     puts "-----------------------------"
-    puts "Welcome to the race log!"
+    puts "Welcome to the Race Log!"
     puts "-----------------------------"
   end
 end

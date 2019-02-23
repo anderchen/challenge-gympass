@@ -11,7 +11,7 @@ class LapsView
     puts "-" * 100
   end
   
-  def show_winner(finsihed_laps, time_after_winner)
+  def show_winner(finsihed_laps, time_after_winner, total_race_time)
     counter = 1
     puts "Final Result of the Race"
     puts "-" * 100
@@ -21,7 +21,10 @@ class LapsView
       puts "#{counter} place:" + (" ")*10 + lap.pilot.pilot_code + (" ")*10 + lap.pilot.name.rjust(15) + (" ")*15 + "#{lap.lap_number}" + (" ")*18 + "#{time_after_winner[counter - 1]}"
       counter += 1
     end
+    puts ""
+    puts "The total race time is #{total_race_time}"
     puts "-" * 100
+    
   end
 
   def choosing_pilot
@@ -54,12 +57,11 @@ class LapsView
   end
 
   def show_average_speed(average_speed, pilot)
-    puts "-" * 70  
+    puts "-" * 70
     puts "\n#{pilot.name} average speed in the whole race is #{average_speed}"
     puts "-" * 70
   end
-
-
+  
   def title
     puts "Time" + (" ")*13 + "Pilot Code" + (" ")*15 + "Name" + (" ")*9 + "Lap Number" + (" ")*4 + "Lap Time" + (" ")*7 + "Lap Avg Speed"
   end
