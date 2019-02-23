@@ -7,12 +7,27 @@ class LapsController
     @lapsview = LapsView.new
     @pilotsview = PilotsView.new
   end
-
+  
+  
   def index
-      all_laps = Lap.all
-      @lapsview.show_all_laps(all_laps)
+    all_laps = Lap.all
+    @lapsview.show_all_laps(all_laps)
   end
-
+  
+  def winner
+    pilots = Pilot.all
+  
+    laps = []
+  
+    pilots.each do |pilot|
+      final_lap = Lap.where(pilot: pilot).last
+      laps << final_lap
+    end
+  
+    finished_laps = laps.sort_by &:time
+    @lapsview.show_winner(finished_laps, time_after_winner(finished_laps))
+  end
+  
   def pilot_laps
     display_all_pilots
     @lapsview.show_pilot_laps(find_pilot_and_laps, @pilot)
@@ -46,19 +61,6 @@ class LapsController
     @lapsview.show_average_speed(average_speed, @pilot)
   end
 
-  def winner
-    pilots = Pilot.all
-
-    laps = []
-
-    pilots.each do |pilot|
-      final_lap = Lap.where(pilot: pilot).last
-      laps << final_lap
-    end
-
-    finished_laps = laps.sort_by &:time
-    @lapsview.show_winner(finished_laps, time_after_winner(finished_laps))
-  end
 
   private
   def display_all_pilots
@@ -77,7 +79,7 @@ class LapsController
 
     finished_laps.each do |lap|
       if lap == winner 
-        result << nil
+        result << "Winner!!!"
       elsif lap.lap_number < 4
         result << "Incomplete"
       else

@@ -22,14 +22,13 @@ class Router
 
   def route_action(action)
     case action
-    when 1 then @pilotscontroller.index
-    when 2 then @lapscontroller.index
+    when 1 then @lapscontroller.index
+    when 2 then @lapscontroller.winner
     when 3 then @lapscontroller.pilot_laps
     when 4 then @lapscontroller.pilot_best_lap
     when 5 then @lapscontroller.best_lap_overall
     when 6 then @lapscontroller.pilot_average_speed
-    when 7 then @lapscontroller.winner
-    when 8 then stop
+    when 7 then stop
     else
       puts "Please input a valid option"
     end
@@ -37,13 +36,12 @@ class Router
 
   def actions
     [
-      "List all pilots",
-      "List the all laps",
+      "List the whole race log",
+      "Show the final result of the race",
       "See all laps from a pilot",
       "See a pilot best lap",
       "Discover which was the best lap of the race",
       "Show a pilot's average speed",
-      "Show the winner of the race",
       "Exit program"
     ]
   end
