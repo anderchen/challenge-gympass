@@ -34,7 +34,7 @@ Após realizar os comandos Rake acima, digite o comando abaixo no terminal para 
 ruby app.rb
 ```
 
-### Outros comandos
+### Considerações
 
 Outros comando úteis
 
@@ -43,3 +43,7 @@ rake db:drop        # Destrói a database
 rake db:version     # Pega a número da versão do schema atual
 rake db:timestamp   # Faz um timestamp para os arquivos de migração
 ```
+#### Sem log do Active Record
+Desativei os logs do Active Record para deixar o View no Terminal mais legível e menos poluído.
+
+Caso queira ver os logs do Active Record vá para o arquivo 'config/application.rb' e descomente a seção responsável por isso.
