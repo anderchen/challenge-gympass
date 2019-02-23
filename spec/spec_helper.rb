@@ -21,3 +21,7 @@ end
 def drop_db
   `rm -rf #{ActiveRecord::Base.configurations['test']['database']}`
 end
+
+def seed_db
+  load "#{__dir__}/../db/seeds.rb"
+end

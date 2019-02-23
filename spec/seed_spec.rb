@@ -22,6 +22,7 @@ describe 'Seed' do
     if Lap.count == 0
       fail NotImplementedError, 'Seed not yet implemented'
     end
+    
     Lap.all.each do |lap|
       expect(lap.pilot).not_to be_nil
     end

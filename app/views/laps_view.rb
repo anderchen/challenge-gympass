@@ -1,5 +1,6 @@
 class LapsView
   def show_all_laps(all_laps)
+
     puts 'Showing all laps from the race'
     puts '-' * 100
     title
