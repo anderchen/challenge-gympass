@@ -3,6 +3,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 require_relative 'config/application'
 
+# Uncomment to run the rubocop
 # desc 'Look for style guide offenses in your code'
 # task :rubocop do
 #   sh 'rubocop --format simple || true'

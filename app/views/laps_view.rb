@@ -64,4 +64,10 @@ class LapsView
   def title
     puts 'Time' + ' ' * 13 + 'Pilot Code' + ' ' * 15 + 'Name' + ' ' * 9 + 'Lap Number' + ' ' * 4 + 'Lap Time' + ' ' * 7 + 'Lap Avg Speed'
   end
+
+  def invalid_option
+    puts "Please choose an option from above!!"
+    puts ''
+    choosing_pilot
+  end
 end

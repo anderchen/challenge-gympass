@@ -68,6 +68,7 @@ class LapsController
   end
 
   private
+  
   # A private method that gets all the pilots in the database
   def display_all_pilots
     all_pilots = Pilot.all
@@ -77,6 +78,10 @@ class LapsController
   # A private method that finds all the laps from a specific pilot
   def find_pilot_and_laps
     @pilot = Pilot.find_by(pilot_code: @lapsview.choosing_pilot)
+    while @pilot.nil?
+      input_option = @lapsview.invalid_option
+      @pilot = Pilot.find_by(pilot_code: input_option)
+    end
     laps = Lap.where(pilot: @pilot) 
   end
 
