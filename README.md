@@ -17,15 +17,6 @@ Caso não tenha, rode no seu terminal o código abaixo:
 ```
 gem install activerecord
 ```
-### Setup
-
-Rode os seguintes comandos no terminal para popular a database
-
-```
-rake db:create      # Cria a database
-rake db:migrate     # Faz as migrações
-rake db:seed        # Popula a database
-```
 
 ## Lançar o app
 Após realizar os comandos Rake acima, digite o comando abaixo no terminal para rodar o app:
@@ -39,6 +30,9 @@ ruby app.rb
 Outros comando úteis
 
 ```
+rake db:create      # Cria a database
+rake db:migrate     # Faz as migrações
+rake db:seed        # Popula a database
 rake db:drop        # Destrói a database
 rake db:version     # Pega a número da versão do schema atual
 rake db:timestamp   # Faz um timestamp para os arquivos de migração
