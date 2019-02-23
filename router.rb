@@ -1,4 +1,4 @@
-require_relative "app/controllers/laps_controller"
+require_relative 'app/controllers/laps_controller'
 
 class Router
   def initialize
@@ -28,19 +28,19 @@ class Router
     when 6 then @lapscontroller.pilot_average_speed
     when 7 then stop
     else
-      puts "Please input a valid option"
+      puts 'Please input a valid option'
     end
   end
 
   def actions
     [
-      "List the whole race log",
-      "Show the final result of the race",
-      "See all laps from a pilot",
-      "See a pilot best lap",
-      "Discover which was the best lap of the race",
+      'List the whole race log',
+      'Show the final result of the race',
+      'See all laps from a pilot',
+      'See a pilot best lap',
+      'Discover which was the best lap of the race',
       "Show a pilot's average speed",
-      "Exit program"
+      'Exit program'
     ]
   end
 
@@ -49,13 +49,13 @@ class Router
     actions.each_with_index do |action, index|
       puts "#{index + 1} - #{action}"
     end
-    print "> "
+    print '> '
   end
 
   def print_welcome
-    puts "-----------------------------"
-    puts "Welcome to the Race Log!"
-    puts "-----------------------------"
+    puts '-----------------------------'
+    puts 'Welcome to the Race Log!'
+    puts '-----------------------------'
   end
 end
 

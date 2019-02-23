@@ -1,6 +1,5 @@
-# require 'Time'
-require_relative "../views/laps_view"
-require_relative "../views/pilots_view"
+require_relative '../views/laps_view'
+require_relative '../views/pilots_view'
 
 class LapsController
   def initialize
@@ -23,7 +22,7 @@ class LapsController
       laps << final_lap
     end
 
-    finished_laps = laps.sort_by &:time
+    finished_laps = laps.sort_by(&:time)
     @lapsview.show_winner(finished_laps, time_after_winner(finished_laps), total_race_time)
   end
 
@@ -77,16 +76,16 @@ class LapsController
     result = []
 
     finished_laps.each do |lap|
-      if lap == winner 
-        result << "Winner!!!"
+      if lap == winner
+        result << 'Winner!!!'
       elsif lap.lap_number < 4
-        result << "Incomplete"
+        result << 'Incomplete'
       else
         winner_parse = Time.parse(winner.time)
         time_parse = Time.parse(lap.time)
         subtraction = time_parse - winner_parse
 
-        after_winner = Time.at(subtraction).strftime("+ %M:%S.%3N")
+        after_winner = Time.at(subtraction).strftime('+ %M:%S.%3N')
         result << after_winner
       end
     end
@@ -103,19 +102,19 @@ class LapsController
     end_time_parse = Time.parse(end_time)
 
     initial_sub = first_time_parse - first_lap_parse
-    initial_hour = "%.2d" % (initial_sub / 3600).floor
-    initial_minute = "%.2d" % ((initial_sub - initial_hour.to_i * 3600) / 60).floor
-    initial_second = "%.2d" % (initial_sub % 60).floor
+    initial_hour = '%.2d' % (initial_sub / 3600).floor
+    initial_minute = '%.2d' % ((initial_sub - initial_hour.to_i * 3600) / 60).floor
+    initial_second = '%.2d' % (initial_sub % 60).floor
     initial_ms = initial_sub.to_s.split('.')[1]
-    initial_time = initial_hour + ":" + initial_minute + ":" + initial_second + "." + initial_ms
+    initial_time = initial_hour + ':' + initial_minute + ':' + initial_second + '.' + initial_ms
     initial_time_parse = Time.parse(initial_time)
 
     total_sub = end_time_parse - initial_time_parse
-    total_hour = "%.2d" % (total_sub / 3600).floor
-    total_minute = "%.2d" % ((total_sub - total_hour.to_i * 3600) / 60).floor
-    total_second = "%.2d" % (total_sub % 60).floor
+    total_hour = '%.2d' % (total_sub / 3600).floor
+    total_minute = '%.2d' % ((total_sub - total_hour.to_i * 3600) / 60).floor
+    total_second = '%.2d' % (total_sub % 60).floor
     total_ms = total_sub.to_s.split('.')[1]
 
-    total_time = total_hour + ":" + total_minute + ":" + total_second + "." + total_ms
+    total_time = total_hour + ':' + total_minute + ':' + total_second + '.' + total_ms
   end
 end

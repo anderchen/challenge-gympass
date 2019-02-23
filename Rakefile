@@ -3,12 +3,13 @@ RSpec::Core::RakeTask.new(:spec)
 
 require_relative 'config/application'
 
-desc 'Look for style guide offenses in your code'
-task :rubocop do
-  sh 'rubocop --format simple || true'
-end
+# desc 'Look for style guide offenses in your code'
+# task :rubocop do
+#   sh 'rubocop --format simple || true'
+# end
 
-task default: [:rubocop, :spec]
+# task default: [:rubocop, :spec]
+task default: :spec
 
 desc 'Open an irb session preloaded with the environment'
 task :console do
@@ -46,7 +47,7 @@ db_namespace = namespace :db do
       ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, version)
     end
 
-    db_namespace["schema:dump"].invoke
+    db_namespace['schema:dump'].invoke
   end
 
   desc 'Retrieves the current schema version number'
@@ -65,17 +66,16 @@ db_namespace = namespace :db do
   end
 
   namespace :schema do
-     desc 'Create a db/schema.rb file that can be portably used against any DB supported by AR'
-     task :dump do
+    desc 'Create a db/schema.rb file that can be portably used against any DB supported by AR'
+    task :dump do
+      require 'active_record/schema_dumper'
+      filename = 'db/schema.rb'
 
-       require 'active_record/schema_dumper'
-       filename = 'db/schema.rb'
-
-       File.open(filename, "w:utf-8") do |file|
-         ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
-       end
-     end
-   end
+      File.open(filename, "w:utf-8") do |file|
+        ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
+      end
+    end
+  end
 
   private
 
