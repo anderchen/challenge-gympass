@@ -13,18 +13,18 @@ class LapsController
     @lapsview.show_all_laps(all_laps)
   end
 
-  # Getting all the last lap of each pilot 
+  # Getting all the last lap of each pilot
   def winner
     pilots = Pilot.all
 
-    # Getting the last lap of each pilot and putting in an array 
+    # Getting the last lap of each pilot and putting in an array
     laps = []
     pilots.each do |pilot|
       final_lap = Lap.where(pilot: pilot).last
       laps << final_lap
     end
 
-    # Sorting all the laps according to their time, in ascending order 
+    # Sorting all the laps according to their time, in ascending order
     finished_laps = laps.sort_by(&:time)
     @lapsview.show_winner(finished_laps, time_after_winner(finished_laps), total_race_time)
   end
@@ -56,7 +56,7 @@ class LapsController
 
     laps = find_pilot_and_laps
 
-    # Summing all the avg speed 
+    # Summing all the avg speed
     average_speed_sum = 0
     laps.each do |lap|
       average_speed_sum += lap.average_speed.to_f
@@ -82,11 +82,11 @@ class LapsController
       input_option = @lapsview.invalid_option
       @pilot = Pilot.find_by(pilot_code: input_option)
     end
-    laps = Lap.where(pilot: @pilot) 
+    laps = Lap.where(pilot: @pilot)
   end
 
   # Private method that calculates the finishing time after the winner
-  # Receives a parameter 'finished_laps' and already ordered in the '#winner'
+  # Receives a parameter 'finished_laps' that is already ordered in the '#winner'
   def time_after_winner(finished_laps)
     winner = finished_laps[0]
     result = []
@@ -119,7 +119,7 @@ class LapsController
     first_time_parse = Time.parse(first_time)
     first_lap_parse = Time.parse(first_lap)
     end_time_parse = Time.parse(end_time)
-    
+
     initial_time_parse = initial_time(first_time_parse, first_lap_parse)
     total_time(initial_time_parse, end_time_parse)
   end

@@ -1,6 +1,5 @@
 class LapsView
   def show_all_laps(all_laps)
-
     puts 'Showing all laps from the race'
     puts '-' * 100
     title
@@ -45,13 +44,13 @@ class LapsView
 
   def show_pilot_best_lap(best_lap)
     puts '-' * 70
-    puts "\nThe best lap #{best_lap.pilot.name} did was lap no. #{best_lap.lap_number} in #{best_lap.lap_time} "
+    puts "\nThe best lap #{best_lap.pilot.name} did was lap no. #{best_lap.lap_number} in #{best_lap.lap_time}"
     puts '-' * 70
   end
 
   def show_overall_best_lap(best_overall)
     puts '-' * 80
-    puts "\nThe best lap of the WHOLE race was made by#{best_overall.pilot.name}, on lap no. #{best_overall.lap_number} in #{best_overall.lap_time} "
+    puts "\nThe best lap of the WHOLE race was made by#{best_overall.pilot.name}, on lap no. #{best_overall.lap_number} in #{best_overall.lap_time}"
     puts '-' * 80
   end
 
