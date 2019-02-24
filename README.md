@@ -27,6 +27,12 @@ ruby app.rb
 
 ### Considerações
 
+A database já está criado. Mas caso encontre algum problema (ou a database não estiver quando clonar o reposítório por alguma razão desconhecida), digite os comandos abaixo:
+
+```
+rake db:drop db:create db:migrate db:seed
+```
+
 Outros comando úteis
 
 ```

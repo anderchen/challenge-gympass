@@ -68,7 +68,7 @@ class LapsController
   end
 
   private
-  
+
   # A private method that gets all the pilots in the database
   def display_all_pilots
     all_pilots = Pilot.all
@@ -136,6 +136,7 @@ class LapsController
     total_second = '%.2d' % (total_sub % 60).floor
     total_ms = total_sub.to_s.split('.')[1]
 
+    # Making the total time readable
     total_time = total_hour + ':' + total_minute + ':' + total_second + '.' + total_ms
   end
 end
