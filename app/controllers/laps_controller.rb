@@ -119,8 +119,13 @@ class LapsController
     first_time_parse = Time.parse(first_time)
     first_lap_parse = Time.parse(first_lap)
     end_time_parse = Time.parse(end_time)
+    
+    initial_time_parse = initial_time(first_time_parse, first_lap_parse)
+    total_time(initial_time_parse, end_time_parse)
+  end
 
-    # Calculating the intial time of the whole race
+  # Calculating the intial time of the whole race
+  def initial_time(first_time_parse, first_lap_parse)
     initial_sub = first_time_parse - first_lap_parse
     initial_hour = '%.2d' % (initial_sub / 3600).floor
     initial_minute = '%.2d' % ((initial_sub - initial_hour.to_i * 3600) / 60).floor
@@ -128,8 +133,10 @@ class LapsController
     initial_ms = initial_sub.to_s.split('.')[1]
     initial_time = initial_hour + ':' + initial_minute + ':' + initial_second + '.' + initial_ms
     initial_time_parse = Time.parse(initial_time)
+  end
 
-    # Calculating the total time of the race
+  # Calculating the total time of the race
+  def total_time(initial_time_parse, end_time_parse)
     total_sub = end_time_parse - initial_time_parse
     total_hour = '%.2d' % (total_sub / 3600).floor
     total_minute = '%.2d' % ((total_sub - total_hour.to_i * 3600) / 60).floor

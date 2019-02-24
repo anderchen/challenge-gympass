@@ -10,6 +10,7 @@ require_relative 'config/application'
 # end
 
 # task default: [:rubocop, :spec]
+
 task default: :spec
 
 desc 'Open an irb session preloaded with the environment'
