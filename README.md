@@ -24,7 +24,7 @@ Após realizar os comandos Rake acima, digite o comando abaixo no terminal para 
 ```
 ruby app.rb
 ```
-O aplicativo aparecerá no terminal.
+**O aplicativo aparecerá no terminal.**
 
 ### Considerações
 
