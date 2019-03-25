@@ -19,7 +19,7 @@ gem install activerecord
 ```
 
 ## Lançar o app
-Após realizar os comandos Rake acima, digite o comando abaixo no terminal para rodar o app:
+Digite o comando abaixo no terminal para rodar o app:
 
 ```
 ruby app.rb
